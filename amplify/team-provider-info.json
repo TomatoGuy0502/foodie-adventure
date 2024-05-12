@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodieadventure-staging-63396-authRole",
+      "UnauthRoleArn": "arn:aws:iam::381492188598:role/amplify-foodieadventure-staging-63396-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::381492188598:role/amplify-foodieadventure-staging-63396-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-foodieadventure-staging-63396-deployment",
+      "UnauthRoleName": "amplify-foodieadventure-staging-63396-unauthRole",
+      "StackName": "amplify-foodieadventure-staging-63396",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:381492188598:stack/amplify-foodieadventure-staging-63396/8791ff90-0f74-11ef-9c74-0e49582b4b55",
+      "AmplifyAppId": "dxowcbqxt4x9u"
+    },
+    "categories": {
+      "auth": {
+        "foodieadventure": {}
+      }
+    }
+  }
+}
