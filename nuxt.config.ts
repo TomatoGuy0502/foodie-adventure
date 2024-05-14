@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
+    "@nuxt/image"
   ],
 
   experimental: {
@@ -74,4 +75,5 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+  ssr: false
 })

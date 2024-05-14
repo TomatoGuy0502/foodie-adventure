@@ -1,0 +1,32 @@
+{
+  "version": "36.0.0",
+  "files": {
+    "0b1de88a2602182a164406562e1731794c606f3a6a3d4b8674a7a39326dd7d09": {
+      "source": {
+        "path": "amplifyfoodieadventuretomatoguysandboxf606661649authF7971BEB.nested.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "0b1de88a2602182a164406562e1731794c606f3a6a3d4b8674a7a39326dd7d09.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "92026ff52629271103656f73c2b2d27922218dd3326b40b90941793ee6e3fbf4": {
+      "source": {
+        "path": "amplify-foodieadventure-tomatoguy-sandbox-f606661649.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "92026ff52629271103656f73c2b2d27922218dd3326b40b90941793ee6e3fbf4.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

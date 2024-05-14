@@ -1,0 +1,234 @@
+{
+  "version": "36.0.0",
+  "artifacts": {
+    "amplify-foodieadventure-tomatoguy-sandbox-f606661649.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "amplify-foodieadventure-tomatoguy-sandbox-f606661649.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "amplify-foodieadventure-tomatoguy-sandbox-f606661649": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "amplify-foodieadventure-tomatoguy-sandbox-f606661649.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "amplify:deployment-type": "sandbox",
+          "created-by": "amplify"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/92026ff52629271103656f73c2b2d27922218dd3326b40b90941793ee6e3fbf4.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "amplify-foodieadventure-tomatoguy-sandbox-f606661649.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "amplify-foodieadventure-tomatoguy-sandbox-f606661649.assets"
+      ],
+      "metadata": {
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "amplify:deployment-type",
+                "Value": "sandbox"
+              },
+              {
+                "Key": "created-by",
+                "Value": "amplify"
+              }
+            ]
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/deploymentType": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deploymentType"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/region": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "region"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyAuth/UserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthUserPool4BA7F805"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyAuth/UserPoolAppClient/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthUserPoolAppClient2626C6F8"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyAuth/IdentityPool": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthIdentityPool3FDE84CC"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyAuth/authenticatedUserRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthauthenticatedUserRoleD8DA3689"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyAuth/unauthenticatedUserRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthunauthenticatedUserRole2B524D9E"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyAuth/IdentityPoolRoleAttachment": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthIdentityPoolRoleAttachment045F17C8"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyfoodieadventuretomatoguysandboxf606661649authamplifyAuthUserPoolAEBCA9D8Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyfoodieadventuretomatoguysandboxf606661649authamplifyAuthUserPoolAEBCA9D8Ref"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyfoodieadventuretomatoguysandboxf606661649authamplifyAuthUserPoolAppClientFC9ED59ARef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyfoodieadventuretomatoguysandboxf606661649authamplifyAuthUserPoolAppClientFC9ED59ARef"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth/amplifyfoodieadventuretomatoguysandboxf606661649authamplifyAuthIdentityPoolD397D630Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyfoodieadventuretomatoguysandboxf606661649authamplifyAuthIdentityPoolD397D630Ref"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/auth.NestedStack/auth.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "auth179371D7"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/userPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userPoolId"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/webClientId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "webClientId"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/identityPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "identityPoolId"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/authRegion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "authRegion"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/allowUnauthenticatedIdentities": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "allowUnauthenticatedIdentities"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/signupAttributes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "signupAttributes"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/usernameAttributes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "usernameAttributes"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/verificationMechanisms": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "verificationMechanisms"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/passwordPolicyMinLength": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "passwordPolicyMinLength"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/passwordPolicyRequirements": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "passwordPolicyRequirements"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/amplify-foodieadventure-tomatoguy-sandbox-f606661649/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "amplify-foodieadventure-tomatoguy-sandbox-f606661649"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

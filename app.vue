@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import '@aws-amplify/ui-vue/styles.css'
+import { Amplify } from 'aws-amplify'
+import outputs from './amplify_outputs.json'
 import { appName } from '~/constants'
+
+Amplify.configure(outputs)
 
 useHead({
   title: appName,
@@ -15,15 +20,15 @@ useHead({
 
 <style>
 html,
-body,
-#__nuxt {
-  height: 100vh;
+body {
+  height: 100dvh;
   margin: 0;
   padding: 0;
+  background-color: #ddd;
 }
 
-html.dark {
-  background: #222;
-  color: white;
+#__nuxt {
+  max-width: 450px;
+  @apply bg-gray-50 relative p-0 m-auto h-100dvh;
 }
 </style>
