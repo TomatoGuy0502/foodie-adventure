@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import '@aws-amplify/ui-vue/styles.css'
+// import '@aws-amplify/ui-vue/styles.css'
 import { Amplify } from 'aws-amplify'
 import outputs from './amplify_outputs.json'
 import { appName } from '~/constants'
