@@ -42,12 +42,15 @@ const filteredCoupons = computed(() => {
 const sortedCoupons = computed(() => {
   if (sortRule.value === 'date') {
     return filteredCoupons.value.toSorted((a, b) => {
-      if (a.date === b.date) return a.brand > b.brand ? 1 : -1
+      if (a.date === b.date)
+        return a.brand > b.brand ? 1 : -1
       return a.date > b.date ? 1 : -1
     })
-  } else {
+  }
+  else {
     return filteredCoupons.value.toSorted((a, b) => {
-      if (a.brand === b.brand) return a.date > b.date ? 1 : -1
+      if (a.brand === b.brand)
+        return a.date > b.date ? 1 : -1
       return a.brand > b.brand ? 1 : -1
     })
   }
@@ -80,7 +83,16 @@ const sortedCoupons = computed(() => {
         <template #body>
           <ul class="max-h-100 flex flex-col gap-2 overflow-y-auto text-lg text-neutral-900 font-medium">
             <label v-for="brand in brands" :key="brand" :for="brand" class="flex items-center gap-2">
-              <input :id="brand" v-model="filterBrands" type="checkbox" :value="brand" class="mr-4 h-6 w-6">
+              <input
+                :id="brand" v-model="filterBrands"
+                type="checkbox" :value="brand" class="invisible w-0 h-0 peer"
+              >
+              <div class="mr-4 h-6 w-6 border rounded peer-checked:bg-primary">
+                <div
+                  class="i-tabler-check text-white"
+                  :class="[filterBrands.has(brand) ? 'opacity-100' : 'opacity-0']"
+                />
+              </div>
               <nuxt-img
                 :src="`/brand-icons/${brand}.png`" width="40" height="40"
                 class="shrink-0"
@@ -101,15 +113,17 @@ const sortedCoupons = computed(() => {
           </button>
         </template>
         <template #title>
-          選擇排序方式
+          <h3 class="text-xl font-bold">
+            選擇排序方式
+          </h3>
         </template>
         <template #body>
           <div class="flex flex-col gap-2">
-            <label for="brand" class="rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'brand' }">
+            <label for="brand" class="rounded p-4 text-center text-neutral-900 transition cursor-pointer" :class="{ 'bg-success': sortRule === 'brand' }">
               <input id="brand" v-model="sortRule" class="hidden" type="radio" value="brand">
               依品牌排序
             </label>
-            <label for="date" class="rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'date' }">
+            <label for="date" class="rounded p-4 text-center text-neutral-900 transition cursor-pointer" :class="{ 'bg-success': sortRule === 'date' }">
               <input id="date" v-model="sortRule" class="hidden" type="radio" value="date">
               依到期日排序
             </label>
@@ -137,10 +151,10 @@ const sortedCoupons = computed(() => {
       </li>
     </ul>
     <p v-else-if="filterBrands.size" class="grid h-full place-items-center text-center text-xl text-neutral-600 font-bold">
-      沒有任何此品牌的戰利品喔
+      沒有任何此品牌的優惠券喔
     </p>
     <p v-else class="grid h-full place-items-center text-center text-xl text-neutral-600 font-bold">
-      你沒有任何的戰利品喔
+      你沒有任何的優惠券喔
     </p>
   </div>
 </template>

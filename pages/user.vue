@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <div>user</div>
+  <div class="h-full p-4 pb-24">user</div>
 </template>
