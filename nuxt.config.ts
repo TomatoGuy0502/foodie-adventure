@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
-    "@nuxt/image"
+    "@nuxt/image",
+    "@nuxt/fonts"
   ],
 
   experimental: {
@@ -75,5 +76,11 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
-  ssr: false
+  ssr: false,
+
+  fonts: {
+    families: [
+      { name: 'Cubic_11', src: '/fonts/Cubic_11.woff2' },
+    ]
+  }
 })

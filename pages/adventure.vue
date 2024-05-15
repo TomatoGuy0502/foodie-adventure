@@ -25,7 +25,7 @@ function handleNextStory(option: number) {
 </script>
 
 <template>
-  <div class="forest h-full flex flex-col p-4 pb-20">
+  <div class="forest font-cubic h-full flex flex-col p-4 pb-20">
     <div class="flex flex-1 flex-col gap-4">
       <div class="rounded-xl bg-white p-4 py-2 text-neutral-800 shadow-xl">
         <div class="flex items-center gap-2">

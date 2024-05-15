@@ -139,21 +139,21 @@ function openCoupon(code: Coupon) {
       </Drawer>
     </div>
     <Modal v-model:isOpen="showCoupon" :coupon="showingCoupon" />
-    <ul v-if="sortedCoupons.length" class="flex flex-col gap-2 overflow-auto pb-4">
+    <ul v-if="sortedCoupons.length" class="flex flex-col gap-3 overflow-auto pb-4">
       <li
         v-for="coupon in sortedCoupons" :key="coupon.id"
-        class="flex gap-2 rounded bg-white p-2 shadow"
+        class="flex gap-4 rounded-xl bg-white p-3 px-4 shadow"
         @click="openCoupon(coupon)"
       >
         <nuxt-img
           :src="`/brand-icons/${coupon.brand}.png`" width="78" height="78"
           class="shrink-0 border-r border-neutral"
         />
-        <div class="">
+        <div class="flex flex-col">
           <p class="font-bold">
             {{ coupon.name }}
           </p>
-          <p class="text-sm text-neutral-600">
+          <p class="mt-auto text-sm text-neutral-600">
             使用期限: {{ coupon.date }}
           </p>
           <p class="text-sm text-neutral-600">
