@@ -6,7 +6,7 @@ definePageMeta({
   middleware: 'auth',
 })
 
-interface Coupon {
+export interface Coupon {
   id: number
   name: string
   date: string
@@ -55,6 +55,13 @@ const sortedCoupons = computed(() => {
     })
   }
 })
+
+const showCoupon = ref(false)
+const showingCoupon = ref<Coupon | null>(null)
+function openCoupon(code: Coupon) {
+  showingCoupon.value = code
+  showCoupon.value = true
+}
 </script>
 
 <template>
@@ -131,8 +138,13 @@ const sortedCoupons = computed(() => {
         </template>
       </Drawer>
     </div>
+    <Modal v-model:isOpen="showCoupon" :coupon="showingCoupon" />
     <ul v-if="sortedCoupons.length" class="flex flex-col gap-2 overflow-auto pb-4">
-      <li v-for="coupon in sortedCoupons" :key="coupon.id" class="flex gap-2 rounded bg-white p-2 shadow">
+      <li
+        v-for="coupon in sortedCoupons" :key="coupon.id"
+        class="flex gap-2 rounded bg-white p-2 shadow"
+        @click="openCoupon(coupon)"
+      >
         <nuxt-img
           :src="`/brand-icons/${coupon.brand}.png`" width="78" height="78"
           class="shrink-0 border-r border-neutral"

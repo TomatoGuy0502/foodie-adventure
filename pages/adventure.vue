@@ -63,7 +63,7 @@ function handleNextStory(option: number) {
   </div>
 </template>
 
-<style scope>
+<style scoped>
 .forest {
   background-image: url('/forest-bg-2.png');
   background-size: contain;

@@ -9,6 +9,6 @@ export default defineNuxtRouteMiddleware(async () => {
     await getCurrentUser()
   }
   catch (e) {
-    return navigateTo('/auth')
+    return navigateTo('/user')
   }
 })

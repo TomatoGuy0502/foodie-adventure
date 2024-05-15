@@ -23,9 +23,9 @@ const route = useRoute()
       </p>
     </nuxt-link>
     <nuxt-link to="/user" class="gap-1/2 flex flex-1 flex-col items-center py-2" :class="{ 'text-primary': route.path === '/user' }">
-      <div class="i-tabler-menu-2 text-xl" />
+      <div class="i-tabler-user text-xl" />
       <p class="text-sm">
-        更多
+        用戶
       </p>
     </nuxt-link>
   </nav>
