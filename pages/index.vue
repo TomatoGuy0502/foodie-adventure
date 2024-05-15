@@ -12,7 +12,8 @@ const conversations = ref([
 ])
 
 function sendMessage() {
-  if (!messageInput.value) return
+  if (!messageInput.value)
+    return
   conversations.value.push({ from: 'user', text: messageInput.value })
   messageInput.value = ''
 }
@@ -23,8 +24,8 @@ function clearChat() {
 </script>
 
 <template>
-  <div class="relative h-full p-4 pb-24">
-    <div class="absolute inset-x-4 top-4 flex gap-4">
+  <div class="forest relative h-full flex flex-col gap-4 p-4 pb-20">
+    <div class="flex gap-4">
       <Drawer>
         <template #button="{ openModal }">
           <button class="flex flex-1 justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow" @click="openModal">
@@ -59,15 +60,15 @@ function clearChat() {
             <h3 class="text-xl font-bold">
               聊天
             </h3>
-            <button class="flex items-center text-neutral-600 text-sm p-1 gap-1" @click="clearChat">
+            <button class="flex items-center gap-1 p-1 text-sm text-neutral-600" @click="clearChat">
               開始新的聊天
               <div class="i-tabler-message-2-bolt" />
             </button>
           </div>
         </template>
         <template #body>
-          <div class="flex flex-col h-120">
-            <div class="flex flex-col flex-1 gap-2 items-start">
+          <div class="h-120 flex flex-col">
+            <div class="flex flex-1 flex-col items-start gap-2">
               <p
                 v-for="c in conversations" :key="c.text"
                 class="chat-bubble"
@@ -76,19 +77,26 @@ function clearChat() {
                 {{ c.text }}
               </p>
             </div>
-            <div class="shrink-0 border rounded px-4 py-2 flex items-center">
+            <div class="flex shrink-0 items-center border rounded px-4 py-2">
               <input v-model="messageInput" type="text" class="w-full resize-none" @keypress.enter.exact="sendMessage">
-              <div class="i-tabler-send-2 shrink-0 text-success w-6 h-6 p-1 cursor-pointer" @click="sendMessage" />
+              <div class="i-tabler-send-2 h-6 w-6 shrink-0 cursor-pointer p-1 text-success" @click="sendMessage" />
             </div>
           </div>
         </template>
       </Drawer>
     </div>
+    <div class="flex flex-1" />
   </div>
 </template>
 
 <style scoped>
 .chat-bubble {
   @apply max-w-9/10 rounded p-2 break-all;
+}
+.forest {
+  background-image: url('/forest-bg-1.png');
+  background-size: contain;
+  background-position: center bottom 80px;
+  background-repeat: no-repeat;
 }
 </style>

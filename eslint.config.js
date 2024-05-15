@@ -5,7 +5,7 @@ import nuxt from './.nuxt/eslint.config.mjs'
 export default nuxt(
   antfu(
     {
-      unocss: false,
+      unocss: true,
       formatters: true,
     },
   ),

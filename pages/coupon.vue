@@ -85,7 +85,7 @@ const sortedCoupons = computed(() => {
             <label v-for="brand in brands" :key="brand" :for="brand" class="flex items-center gap-2">
               <input
                 :id="brand" v-model="filterBrands"
-                type="checkbox" :value="brand" class="invisible w-0 h-0 peer"
+                type="checkbox" :value="brand" class="peer invisible h-0 w-0"
               >
               <div class="mr-4 h-6 w-6 border rounded peer-checked:bg-primary">
                 <div
@@ -119,11 +119,11 @@ const sortedCoupons = computed(() => {
         </template>
         <template #body>
           <div class="flex flex-col gap-2">
-            <label for="brand" class="rounded p-4 text-center text-neutral-900 transition cursor-pointer" :class="{ 'bg-success': sortRule === 'brand' }">
+            <label for="brand" class="cursor-pointer rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'brand' }">
               <input id="brand" v-model="sortRule" class="hidden" type="radio" value="brand">
               依品牌排序
             </label>
-            <label for="date" class="rounded p-4 text-center text-neutral-900 transition cursor-pointer" :class="{ 'bg-success': sortRule === 'date' }">
+            <label for="date" class="cursor-pointer rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'date' }">
               <input id="date" v-model="sortRule" class="hidden" type="radio" value="date">
               依到期日排序
             </label>

@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "@aws-amplify/ui-vue": "^4.2.6",
-    "@headlessui/vue": "^1.7.22"
+    "@headlessui/vue": "^1.7.22",
+    "qrcode": "^1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.15.0",
