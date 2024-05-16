@@ -1,67 +1,18 @@
 <script setup lang="ts">
 import { brands } from '~/constants'
-import type { Brand } from '~/constants'
+import { useShowCoupon } from '~/composables/coupon/useShowCoupon'
+import { useSortedCoupon } from '~/composables/coupon/useSortedCoupon'
 
 definePageMeta({
   middleware: 'auth',
 })
 
-export interface Coupon {
-  id: number
-  name: string
-  date: string
-  discount: string
-  brand: Brand
-}
-
-const coupons = ref<Coupon[]>([
-  { id: 0, name: '100 元折價券', date: '2021-10-10', discount: '滿 1000 減 100', brand: '王品' },
-  { id: 1, name: '200 元折價券', date: '2021-10-10', discount: '滿 2000 減 200', brand: '王品' },
-  { id: 2, name: '300 元折價券', date: '2021-10-10', discount: '滿 3000 減 300', brand: '石二鍋' },
-  { id: 9, name: '100 元折價券', date: '2021-11-13', discount: '滿 1000 減 100', brand: '石二鍋' },
-  { id: 10, name: '200 元折價券', date: '2021-11-13', discount: '滿 2000 減 200', brand: '王品' },
-  { id: 11, name: '300 元折價券', date: '2021-11-13', discount: '滿 3000 減 300', brand: '王品' },
-  { id: 12, name: '100 元折價券', date: '2021-12-05', discount: '滿 1000 減 100', brand: '王品' },
-  { id: 13, name: '200 元折價券', date: '2021-12-05', discount: '滿 2000 減 200', brand: '陶板屋' },
-  { id: 14, name: '300 元折價券', date: '2021-12-05', discount: '滿 3000 減 300', brand: '王品' },
-])
-
-const filterBrands = ref<Set<Brand>>(new Set())
-function clearFilter() {
-  filterBrands.value.clear()
-}
-
-type SortRule = 'brand' | 'date'
-const sortRule = ref<SortRule>('brand')
-
-const filteredCoupons = computed(() => {
-  if (filterBrands.value.size === 0)
-    return coupons.value
-  return coupons.value.filter(coupon => filterBrands.value.has(coupon.brand))
+const { coupons, sortRule, filterBrands, sortedCoupons, clearFilter } = useSortedCoupon()
+const { isShowing, showingCoupon, openCoupon } = useShowCoupon()
+const { getCoupon } = useAmplify()
+onMounted(async () => {
+  coupons.value = await getCoupon()
 })
-const sortedCoupons = computed(() => {
-  if (sortRule.value === 'date') {
-    return filteredCoupons.value.toSorted((a, b) => {
-      if (a.date === b.date)
-        return a.brand > b.brand ? 1 : -1
-      return a.date > b.date ? 1 : -1
-    })
-  }
-  else {
-    return filteredCoupons.value.toSorted((a, b) => {
-      if (a.brand === b.brand)
-        return a.date > b.date ? 1 : -1
-      return a.brand > b.brand ? 1 : -1
-    })
-  }
-})
-
-const showCoupon = ref(false)
-const showingCoupon = ref<Coupon | null>(null)
-function openCoupon(code: Coupon) {
-  showingCoupon.value = code
-  showCoupon.value = true
-}
 </script>
 
 <template>
@@ -130,15 +81,15 @@ function openCoupon(code: Coupon) {
               <input id="brand" v-model="sortRule" class="hidden" type="radio" value="brand">
               依品牌排序
             </label>
-            <label for="date" class="cursor-pointer rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'date' }">
-              <input id="date" v-model="sortRule" class="hidden" type="radio" value="date">
+            <label for="expiry_date" class="cursor-pointer rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'expiry_date' }">
+              <input id="expiry_date" v-model="sortRule" class="hidden" type="radio" value="expiry_date">
               依到期日排序
             </label>
           </div>
         </template>
       </Drawer>
     </div>
-    <Modal v-model:isOpen="showCoupon" :coupon="showingCoupon" />
+    <CouponModal v-model:isOpen="isShowing" :coupon="showingCoupon" />
     <ul v-if="sortedCoupons.length" class="flex flex-col gap-3 overflow-auto pb-4">
       <li
         v-for="coupon in sortedCoupons" :key="coupon.id"
@@ -154,10 +105,10 @@ function openCoupon(code: Coupon) {
             {{ coupon.name }}
           </p>
           <p class="mt-auto text-sm text-neutral-600">
-            使用期限: {{ coupon.date }}
+            使用期限: {{ coupon.expiry_date }}
           </p>
           <p class="text-sm text-neutral-600">
-            {{ coupon.discount }}
+            {{ coupon.description }}
           </p>
         </div>
       </li>

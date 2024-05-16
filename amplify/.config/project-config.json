@@ -10,8 +10,8 @@
     "config": {
       "SourceDir": "/",
       "DistributionDir": "dist",
-      "BuildCommand": "pnpm build",
-      "StartCommand": "pnpm start"
+      "BuildCommand": "pnpm run build",
+      "StartCommand": "pnpm run start"
     }
   }
 }

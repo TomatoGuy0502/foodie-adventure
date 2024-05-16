@@ -7,7 +7,7 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { useQRCode } from '@vueuse/integrations/useQRCode'
-import type { Coupon } from '~/pages/coupon.vue'
+import type { Coupon } from '~/amplify/data/resource'
 
 const props = defineProps<{
   coupon: Coupon | null
@@ -15,7 +15,7 @@ const props = defineProps<{
 const couponCode = computed(() => {
   if (!props.coupon)
     return ''
-  return `${props.coupon.id}-${props.coupon.name}-${props.coupon.date}`
+  return `${props.coupon.id}-${props.coupon.name}-${props.coupon.expiry_date}`
 })
 const qrcode = useQRCode(couponCode, {
   width: 200,
@@ -67,7 +67,7 @@ function closeModal() {
               </DialogTitle>
               <h4 class="text-neutral-700">
                 {{ coupon?.brand }}<br>
-                {{ coupon?.discount }}
+                {{ coupon?.description }}
               </h4>
               <img :src="qrcode" alt="QR Code">
             </DialogPanel>

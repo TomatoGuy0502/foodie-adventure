@@ -13,7 +13,12 @@
     },
     "categories": {
       "auth": {
-        "foodieadventure": {}
+        "foodieadventure": {
+          "nativeClientId": "1d13g7q0mia5kpmiiovh2hk7cg",
+          "userPoolId": "ap-northeast-1_LJ0xemzna",
+          "userPoolName": "FoodieAdventureUserPool",
+          "webClientId": "1d13g7q0mia5kpmiiovh2hk7cg"
+        }
       }
     }
   }
