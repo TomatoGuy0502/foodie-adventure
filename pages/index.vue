@@ -85,7 +85,10 @@ function clearChat() {
         </template>
       </Drawer>
     </div>
-    <div class="flex flex-1" />
+    <div class="relative flex-1">
+      <ProgressBar />
+      <NuxtImg src="/dog.png" class="absolute bottom-4 left-1/2 h-40 w-40 -translate-x-1/2" />
+    </div>
   </div>
 </template>
 
@@ -94,9 +97,9 @@ function clearChat() {
   @apply max-w-9/10 rounded p-2 break-all;
 }
 .forest {
-  background-image: url('/forest-bg-1.png');
-  background-size: contain;
-  background-position: center bottom 80px;
+  background-image: url('/index-bg.jpg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 </style>
