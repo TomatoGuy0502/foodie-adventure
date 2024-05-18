@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-  finishedDays: {
+  weekCheckedInDay: {
     type: Array,
     default: () => [true, false, false, true, true, true, false],
   },
@@ -8,9 +8,11 @@ const props = defineProps({
 const date = new Date()
 const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 const dayOfTheWeek = (date.getDay() + 6) % 7
-const continueInterval = Array(6)
-for (let i = 0; i < 6; i++)
-  continueInterval[i] = props.finishedDays[i + 1] && props.finishedDays[i]
+const continueInterval = ref(Array(6).fill(false))
+watch(() => props.weekCheckedInDay, (newVal) => {
+  for (let i = 0; i < 6; i++)
+    continueInterval.value[i] = newVal[i + 1] && newVal[i]
+}, { immediate: true })
 </script>
 
 <template>
@@ -34,7 +36,7 @@ for (let i = 0; i < 6; i++)
         <li
           v-for="i in 7" :key="i"
           class="h-6 w-6 rounded-full"
-          :class="[props.finishedDays[i - 1] ? 'bg-secondary-400' : 'bg-neutral-400']"
+          :class="[props.weekCheckedInDay[i - 1] ? 'bg-secondary-400' : 'bg-neutral-400']"
         />
       </ul>
     </div>

@@ -3,6 +3,16 @@ definePageMeta({
   middleware: 'auth',
 })
 
+const userStore = useUserStore()
+const { getUserCheckInsOfThisWeek } = useAmplify()
+
+const weekBooleanArray = ref(Array(7).fill(false))
+async function handleGetUserCheckInsThisWeek() {
+  const res = await getUserCheckInsOfThisWeek(userStore.userId)
+  weekBooleanArray.value = getWeekBooleanArray(res.map(checkIn => checkIn.date))
+}
+watch(() => userStore.userId, handleGetUserCheckInsThisWeek, { immediate: true })
+
 const messageInput = ref('')
 
 const conversations = ref([
@@ -86,7 +96,7 @@ function clearChat() {
       </Drawer>
     </div>
     <div class="relative flex-1">
-      <ProgressBar />
+      <ProgressBar :week-checked-in-day="weekBooleanArray" />
       <NuxtImg src="/dog.png" class="absolute bottom-4 left-1/2 h-40 w-40 -translate-x-1/2" />
     </div>
   </div>

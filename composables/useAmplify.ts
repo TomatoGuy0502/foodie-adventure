@@ -87,5 +87,60 @@ export function useAmplify() {
     return data
   }
 
-  return { getCoupon, getUserCoupon, createCoupon, giveUserCoupon, createUser, getUserIdByEmail }
+  const checkUserTodayCheckIn = async (userId: string) => {
+    const date = (new Date()).toISOString().slice(0, 10)
+    const { data, errors } = await client.models.CheckIn.list({
+      filter: {
+        userId: {
+          eq: userId,
+        },
+        date: {
+          eq: date,
+        },
+      },
+    })
+    if (errors)
+      console.error(errors)
+    return !!data.length
+  }
+
+  const getUserCheckIns = async (userId: string) => {
+    const { data, errors } = await client.models.CheckIn.list({
+      filter: {
+        userId: {
+          eq: userId,
+        },
+      },
+    })
+    if (errors)
+      console.error(errors)
+    return data
+  }
+
+  const getUserCheckInsOfThisWeek = async (userId: string) => {
+    const mondayDate = getMondayOfCurrentWeek().toISOString().slice(0, 10)
+
+    const { data, errors } = await client.models.CheckIn.list({
+      filter: {
+        userId: {
+          eq: userId,
+        },
+        date: {
+          between: [mondayDate, (new Date()).toISOString().slice(0, 10)],
+        },
+      },
+    })
+    if (errors)
+      console.error(errors)
+    return data
+  }
+
+  const userCheckIn = async (userId: string, date: string = (new Date()).toISOString().slice(0, 10)) => {
+    await client.models.CheckIn.create({
+      userId,
+      date,
+    })
+  }
+
+  return { getCoupon, getUserCoupon, createCoupon, giveUserCoupon, createUser, getUserIdByEmail, userCheckIn, checkUserTodayCheckIn, getUserCheckIns, getUserCheckInsOfThisWeek }
 }

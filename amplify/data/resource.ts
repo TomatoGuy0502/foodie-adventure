@@ -6,6 +6,7 @@ const schema = a.schema({
     email: a.email().required(),
     profileOwner: a.string(),
     coupons: a.hasMany('UserCoupon', 'userId'),
+    checkIns: a.hasMany('CheckIn', 'userId'),
   }).authorization(allow => allow.ownerDefinedIn('profileOwner')),
   Coupon: a.model({
     name: a.string().required(),
@@ -19,6 +20,11 @@ const schema = a.schema({
     couponId: a.id().required(),
     user: a.belongsTo('User', 'userId'),
     coupon: a.belongsTo('Coupon', 'couponId'),
+  }).authorization(allow => [allow.authenticated()]),
+  CheckIn: a.model({
+    userId: a.id().required(),
+    date: a.date().required(),
+    users: a.belongsTo('User', 'userId'),
   }).authorization(allow => [allow.authenticated()]),
 }).authorization(allow => [allow.resource(postConfirmation)])
 

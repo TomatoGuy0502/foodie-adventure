@@ -19,14 +19,41 @@ const conversation = [{
 }]
 
 function handleNextStory(option: number) {
+  // eslint-disable-next-line no-console
   console.log(conversation[conversationIndex.value].options?.[option])
   conversationIndex.value++
+}
+const userStore = useUserStore()
+const { userCheckIn, getUserCheckInsOfThisWeek, getUserCheckIns } = useAmplify()
+
+function addDays(date: Date, days: number) {
+  date.setDate(date.getDate() + days)
+  return date
+}
+function toDateString(date: Date) {
+  return date.toISOString().slice(0, 10)
+}
+const fakeDate = ref((new Date()).toISOString().slice(0, 10))
+async function handleFakeCheckIn() {
+  await userCheckIn(userStore.userId, fakeDate.value)
+  console.log(`${fakeDate.value}打卡完畢`)
+}
+async function handleGetUserCheckInsThisWeek() {
+  const res = await getUserCheckInsOfThisWeek(userStore.userId)
+  console.log(res)
+}
+async function handleGetUserCheckIns() {
+  const res = await getUserCheckIns(userStore.userId)
+  console.log(res)
 }
 </script>
 
 <template>
   <div class="forest h-full flex flex-col p-4 pb-20 font-cubic">
-    <div class="flex flex-1 flex-col gap-4">
+    <div v-if="!userStore.hasCheckUserCheckIn" class="grid flex-1 place-items-center">
+      載入中
+    </div>
+    <div v-else-if="!userStore.isUserCheckedIn" class="flex flex-1 flex-col gap-4">
       <div class="rounded-xl bg-white p-4 py-2 text-neutral-800 shadow-xl">
         <div class="flex items-center gap-2">
           <div class="h-1 flex-1 rounded bg-neutral-600" />
@@ -57,6 +84,26 @@ function handleNextStory(option: number) {
       <button v-else class="flex items-center justify-center gap-2 rounded-full bg-primary/80 p-2 text-white font-bold shadow-xl backdrop-blur-sm hover:bg-primary/90">
         領取禮物
         <div class="i-tabler-gift" />
+      </button>
+    </div>
+    <div v-else class="grid flex-1 place-items-center">
+      你已經完成今天的探險囉！
+    </div>
+    <div class="fixed left-5 top-5 flex flex-col gap-4">
+      選定： {{ fakeDate }}
+      <select v-model="fakeDate">
+        <option v-for="i in 10" :key="i" :value="toDateString(addDays(new Date(), -i + 1))">
+          {{ toDateString(addDays(new Date(), -i + 1)) }}
+        </option>
+      </select>
+      <button class="btn" @click="handleFakeCheckIn">
+        打卡
+      </button>
+      <button class="btn" @click="handleGetUserCheckIns">
+        顯示所有打卡狀態
+      </button>
+      <button class="btn" @click="handleGetUserCheckInsThisWeek">
+        顯示本週打卡狀態
       </button>
     </div>
     <!-- <nuxt-img class="" src="/forest-bg-2.png" alt="forest-bg" /> -->
