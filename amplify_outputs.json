@@ -35,6 +35,13 @@
         "User": {
           "name": "User",
           "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
             "email": {
               "name": "email",
               "isArray": false,
@@ -61,7 +68,7 @@
               "association": {
                 "connectionType": "HAS_MANY",
                 "associatedWith": [
-                  "userEmail"
+                  "userId"
                 ]
               }
             },
@@ -90,14 +97,6 @@
               "properties": {}
             },
             {
-              "type": "key",
-              "properties": {
-                "fields": [
-                  "email"
-                ]
-              }
-            },
-            {
               "type": "auth",
               "properties": {
                 "rules": [
@@ -118,8 +117,8 @@
             }
           ],
           "primaryKeyInfo": {
-            "isCustomPrimaryKey": true,
-            "primaryKeyFieldName": "email",
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
             "sortKeyFieldNames": []
           }
         },
@@ -234,10 +233,10 @@
               "isRequired": true,
               "attributes": []
             },
-            "userEmail": {
-              "name": "userEmail",
+            "userId": {
+              "name": "userId",
               "isArray": false,
-              "type": "AWSEmail",
+              "type": "ID",
               "isRequired": true,
               "attributes": []
             },
@@ -259,7 +258,7 @@
               "association": {
                 "connectionType": "BELONGS_TO",
                 "targetNames": [
-                  "userEmail"
+                  "userId"
                 ]
               }
             },

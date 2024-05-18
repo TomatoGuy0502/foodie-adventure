@@ -5,8 +5,8 @@ const schema = a.schema({
   User: a.model({
     email: a.email().required(),
     profileOwner: a.string(),
-    coupons: a.hasMany('UserCoupon', 'userEmail'),
-  }).identifier(['email']).authorization(allow => allow.ownerDefinedIn('profileOwner')),
+    coupons: a.hasMany('UserCoupon', 'userId'),
+  }).authorization(allow => allow.ownerDefinedIn('profileOwner')),
   Coupon: a.model({
     name: a.string().required(),
     expiry_date: a.date().required(),
@@ -15,9 +15,9 @@ const schema = a.schema({
     users: a.hasMany('UserCoupon', 'couponId'),
   }).authorization(allow => [allow.authenticated()]),
   UserCoupon: a.model({
-    userEmail: a.email().required(),
+    userId: a.id().required(),
     couponId: a.id().required(),
-    user: a.belongsTo('User', 'userEmail'),
+    user: a.belongsTo('User', 'userId'),
     coupon: a.belongsTo('Coupon', 'couponId'),
   }).authorization(allow => [allow.authenticated()]),
 }).authorization(allow => [allow.resource(postConfirmation)])
