@@ -11,7 +11,7 @@ const { locale } = useI18n()
 
 const { coupons, sortRule, filterBrands, sortedCoupons, clearFilter } = useSortedCoupon()
 const { isShowing, showingCoupon, openCoupon } = useShowCoupon()
-const { getCoupon } = useAmplify()
+const { getCoupon, createCoupon } = useAmplify()
 onMounted(async () => {
   coupons.value = await getCoupon()
 })
@@ -125,5 +125,8 @@ onMounted(async () => {
     <p v-else class="grid h-full place-items-center text-center text-xl text-neutral-600 font-bold">
       {{ $t('couponPage.no_coupon_message') }}
     </p>
+    <button class="btn" @click="() => createCoupon()">
+      家家
+    </button>
   </div>
 </template>

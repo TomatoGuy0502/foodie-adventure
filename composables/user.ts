@@ -1,6 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
+  const { getUserIdByEmail } = useAmplify()
   const email = ref('')
   const userId = ref('')
 
@@ -8,6 +9,11 @@ export const useUserStore = defineStore('user', () => {
     email.value = ''
     userId.value = ''
   }
+
+  watchEffect(async () => {
+    if (email.value && !userId.value)
+      userId.value = await getUserIdByEmail(email.value)
+  })
 
   function setEmail(e: string) {
     email.value = e
@@ -22,7 +28,7 @@ export const useUserStore = defineStore('user', () => {
     userId: readonly(userId),
     setEmail,
     setUserId,
-    signOut
+    signOut,
   }
 })
 

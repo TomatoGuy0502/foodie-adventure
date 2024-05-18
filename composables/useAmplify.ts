@@ -46,12 +46,22 @@ export function useAmplify() {
   }
 
   // 客戶端不會用到
-  const createCoupon = async () => {
+  const createCoupon = async ({
+    name = '優惠券',
+    expiry_date = '2024-06-17',
+    description = '滿兩千折兩百',
+    brand = '石二鍋',
+  } = {
+    name: '優惠券',
+    expiry_date: '2024-06-17',
+    description: '滿兩千折兩百',
+    brand: '石二鍋',
+  }) => {
     const { data: coupons, errors } = await client.models.Coupon.create({
-      name: '優惠券',
-      expiry_date: '2024-06-17',
-      description: '滿兩千折兩百',
-      brand: '石二鍋',
+      name,
+      expiry_date,
+      description,
+      brand,
     })
     if (errors)
       console.error(errors)
