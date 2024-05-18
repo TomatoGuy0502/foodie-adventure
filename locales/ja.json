@@ -1,0 +1,33 @@
+{
+  "home": "ホーム",
+  "adventure": "ぼうけん",
+  "coupon": "クーポン",
+  "user": "ユーザー",
+  "language": "言語",
+  "notification": "通知",
+  "help": "ヘルプ",
+  "logout": "ログアウト",
+
+  "homePage": {
+    "dress": "ドレス",
+    "chat": "チャット",
+    "start_new_chat": "新しいチャットを始める"
+  },
+  
+  "adventurePage": {
+    "what_is_your_choice": "次はどうしますか？",
+    "get_price": "ギフトを受け取る"
+  },
+
+  "couponPage": {
+    "filter_brand": "ブランドで絞り込む",
+    "clear_filter": "フィルターをクリア",
+    "sort_brand": "ソート",
+    "select_sort_method": "ソート方法を選択",
+    "sort_by_brand": "ブランドでソート",
+    "sort_by_expiry_date": "有効期限でソート",
+    "expiry_date": "有効期限",
+    "no_brand_coupon_message": "このブランドのクーポンはありません",
+    "no_coupon_message": "クーポンはありません"
+  }
+}

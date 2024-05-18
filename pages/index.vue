@@ -31,13 +31,13 @@ function clearChat() {
           <button class="flex flex-1 justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow" @click="openModal">
             <div class="i-tabler-shirt text-xl" />
             <p class="font-bold">
-              裝扮
+              {{ $t('homePage.dress') }}
             </p>
           </button>
         </template>
         <template #title>
           <h3 class="text-xl font-bold">
-            裝扮
+            {{ $t('homePage.dress') }}
           </h3>
         </template>
         <template #body>
@@ -51,17 +51,17 @@ function clearChat() {
           <button class="flex flex-1 justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow" @click="openModal">
             <div class="i-tabler-message-circle text-xl" />
             <p class="font-bold">
-              聊天
+              {{ $t('homePage.chat') }}
             </p>
           </button>
         </template>
         <template #title>
           <div class="flex items-center justify-between">
             <h3 class="text-xl font-bold">
-              聊天
+              {{ $t('homePage.chat') }}
             </h3>
             <button class="flex items-center gap-1 p-1 text-sm text-neutral-600" @click="clearChat">
-              開始新的聊天
+              {{ $t('homePage.start_new_chat') }}
               <div class="i-tabler-message-2-bolt" />
             </button>
           </div>

@@ -1,0 +1,33 @@
+{
+  "home": "Home",
+  "adventure": "Adventure",
+  "coupon": "Coupon",
+  "user": "User",
+  "language": "Language",
+  "notification": "Notification",
+  "help": "Help",
+  "logout": "Logout",
+
+  "homePage": {
+    "dress": "Dress",
+    "chat": "Chat",
+    "start_new_chat": "Start New Chat"
+  },
+
+  "adventurePage": {
+    "what_is_your_choice": "What is your choice?",
+    "get_price": "Claim your gift"
+  },
+
+  "couponPage": {
+    "filter_brand": "Filter Brand",
+    "clear_filter": "Clear Filter",
+    "sort_brand": "Sort",
+    "select_sort_method": "Select Sort Method",
+    "sort_by_brand": "Sort by Brand",
+    "sort_by_expiry_date": "Sort by Expiry Date",
+    "expiry_date": "Expiry Date",
+    "no_brand_coupon_message": "You have no coupons for this brand",
+    "no_coupon_message": "You have no coupons"
+  }
+}

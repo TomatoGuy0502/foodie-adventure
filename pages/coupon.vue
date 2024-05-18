@@ -7,6 +7,8 @@ definePageMeta({
   middleware: 'auth',
 })
 
+const { locale } = useI18n()
+
 const { coupons, sortRule, filterBrands, sortedCoupons, clearFilter } = useSortedCoupon()
 const { isShowing, showingCoupon, openCoupon } = useShowCoupon()
 const { getCoupon } = useAmplify()
@@ -21,20 +23,23 @@ onMounted(async () => {
       <Drawer>
         <template #button="{ openModal }">
           <button
-            class="flex flex-1 justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow"
+            class="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow"
             @click="openModal"
           >
-            篩選品牌
+            {{ $t('couponPage.filter_brand') }}
             <div class="i-tabler-filter-star text-xl" />
           </button>
         </template>
         <template #title>
           <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">
-              篩選品牌
+            <h3 class="font-bold" :class="[locale === 'ja' ? '' : 'text-xl']">
+              {{ $t('couponPage.filter_brand') }}
             </h3>
-            <button class="flex items-center text-neutral-600" @click="clearFilter">
-              清除篩選{{ filterBrands.size ? `(${filterBrands.size})` : '' }}<div class="i-tabler-filter-cancel" />
+            <button
+              class="flex items-center text-neutral-600"
+              :class="[locale === 'ja' ? 'text-sm' : 'text-xl']" @click="clearFilter"
+            >
+              {{ $t('couponPage.clear_filter') }} {{ filterBrands.size ? `(${filterBrands.size})` : '' }}<div class="i-tabler-filter-cancel" />
             </button>
           </div>
         </template>
@@ -63,27 +68,28 @@ onMounted(async () => {
       <Drawer>
         <template #button="{ openModal }">
           <button
-            class="flex flex-1 justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow"
+            class="flex items-center justify-center gap-2 rounded-full bg-accent p-3 px-4 text-white shadow"
+            :class="[locale === 'ja' ? '' : 'flex-1']"
             @click="openModal"
           >
-            排序
+            {{ $t('couponPage.sort_brand') }}
             <div class="i-tabler-sort-ascending text-xl" />
           </button>
         </template>
         <template #title>
           <h3 class="text-xl font-bold">
-            選擇排序方式
+            {{ $t('couponPage.select_sort_method') }}
           </h3>
         </template>
         <template #body>
           <div class="flex flex-col gap-2">
             <label for="brand" class="cursor-pointer rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'brand' }">
               <input id="brand" v-model="sortRule" class="hidden" type="radio" value="brand">
-              依品牌排序
+              {{ $t('couponPage.sort_by_brand') }}
             </label>
             <label for="expiry_date" class="cursor-pointer rounded p-4 text-center text-neutral-900 transition" :class="{ 'bg-success': sortRule === 'expiry_date' }">
               <input id="expiry_date" v-model="sortRule" class="hidden" type="radio" value="expiry_date">
-              依到期日排序
+              {{ $t('couponPage.sort_by_expiry_date') }}
             </label>
           </div>
         </template>
@@ -105,7 +111,7 @@ onMounted(async () => {
             {{ coupon.name }}
           </p>
           <p class="mt-auto text-sm text-neutral-600">
-            使用期限: {{ coupon.expiry_date }}
+            {{ $t('couponPage.expiry_date') }}: {{ coupon.expiry_date }}
           </p>
           <p class="text-sm text-neutral-600">
             {{ coupon.description }}
@@ -114,10 +120,10 @@ onMounted(async () => {
       </li>
     </ul>
     <p v-else-if="filterBrands.size" class="grid h-full place-items-center text-center text-xl text-neutral-600 font-bold">
-      沒有任何此品牌的優惠券喔
+      {{ $t('couponPage.no_brand_coupon_message') }}
     </p>
     <p v-else class="grid h-full place-items-center text-center text-xl text-neutral-600 font-bold">
-      你沒有任何的優惠券喔
+      {{ $t('couponPage.no_coupon_message') }}
     </p>
   </div>
 </template>

@@ -25,7 +25,7 @@ function handleNextStory(option: number) {
 </script>
 
 <template>
-  <div class="forest font-cubic h-full flex flex-col p-4 pb-20">
+  <div class="forest h-full flex flex-col p-4 pb-20 font-cubic">
     <div class="flex flex-1 flex-col gap-4">
       <div class="rounded-xl bg-white p-4 py-2 text-neutral-800 shadow-xl">
         <div class="flex items-center gap-2">
@@ -41,7 +41,7 @@ function handleNextStory(option: number) {
       </div>
       <template v-if="conversationIndex <= 2">
         <p class="text-center">
-          接下來你要如何選擇
+          {{ $t('adventurePage.what_is_your_choice') }}
         </p>
         <ol class="flex flex-col gap-2">
           <li

@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     "@nuxt/image",
-    "@nuxt/fonts"
+    "@nuxt/fonts",
+    "@nuxtjs/i18n"
   ],
 
   experimental: {
@@ -82,5 +83,12 @@ export default defineNuxtConfig({
     families: [
       { name: 'Cubic_11', src: '/fonts/Cubic_11.woff2' },
     ]
+  },
+
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    strategy: 'no_prefix',
+    defaultLocale: 'zh',
+    locales: ['zh', 'en', 'ja', 'ko']
   }
 })

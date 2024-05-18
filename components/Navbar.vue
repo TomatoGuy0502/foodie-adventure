@@ -7,25 +7,25 @@ const route = useRoute()
     <nuxt-link to="/" class="gap-1/2 flex flex-1 flex-col items-center py-2" :class="{ 'text-primary': route.path === '/' }">
       <div class="i-tabler-home text-xl" />
       <p class="text-sm">
-        營地
+        {{ $t('home') }}
       </p>
     </nuxt-link>
     <nuxt-link to="/adventure" class="gap-1/2 flex flex-1 flex-col items-center py-2" :class="{ 'text-primary': route.path === '/adventure' }">
       <div class="i-tabler-map-route text-xl" />
       <p class="text-sm">
-        冒險
+        {{ $t('adventure') }}
       </p>
     </nuxt-link>
     <nuxt-link to="/coupon" class="gap-1/2 flex flex-1 flex-col items-center py-2" :class="{ 'text-primary': route.path === '/coupon' }">
       <div class="i-tabler-ticket text-xl" />
       <p class="text-sm">
-        戰利品
+        {{ $t('coupon') }}
       </p>
     </nuxt-link>
     <nuxt-link to="/user" class="gap-1/2 flex flex-1 flex-col items-center py-2" :class="{ 'text-primary': route.path === '/user' }">
       <div class="i-tabler-user text-xl" />
       <p class="text-sm">
-        用戶
+        {{ $t('user') }}
       </p>
     </nuxt-link>
   </nav>

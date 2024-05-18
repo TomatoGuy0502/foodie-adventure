@@ -1,0 +1,33 @@
+{
+  "home": "홈",
+  "adventure": "모험",
+  "coupon": "쿠폰",
+  "user": "사용자",
+  "language": "언어",
+  "notification": "알림",
+  "help": "도움말",
+  "logout": "로그아웃",
+
+  "homePage": {
+    "dress": "드레스",
+    "chat": "채팅",
+    "start_new_chat": "새 채팅 시작"
+  },
+
+  "adventurePage": {
+    "what_is_your_choice": "다음 선택은 무엇입니까?",
+    "get_price": "선물을 받다"
+  },
+
+  "couponPage": {
+    "filter_brand": "브랜드 필터",
+    "clear_filter": "필터 지우기",
+    "sort_brand": "정렬",
+    "select_sort_method": "정렬 방법 선택",
+    "sort_by_brand": "브랜드별 정렬",
+    "sort_by_expiry_date": "만료일로 정렬",
+    "expiry_date": "만료일",
+    "no_brand_coupon_message": "이 브랜드의 쿠폰이 없습니다",
+    "no_coupon_message": "쿠폰이 없습니다"
+  }
+}
