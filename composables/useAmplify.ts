@@ -6,8 +6,6 @@ const client = generateClient<Schema>({
 })
 
 export function useAmplify() {
-  const userStore = useUserStore()
-
   const getCoupon = async () => {
     const { data: coupons, errors } = await client.models.Coupon.list()
     if (errors)
@@ -17,11 +15,26 @@ export function useAmplify() {
     return coupons
   }
 
-  const getUserCoupon = async () => {
+  const getUserIdByEmail = async (email: string) => {
+    const { data: users, errors } = await client.models.User.list({
+      filter: {
+        email: {
+          eq: email,
+        },
+      },
+    })
+    if (errors)
+      console.error(errors)
+    // eslint-disable-next-line no-console
+    console.log(users)
+    return users[0]?.id || ''
+  }
+
+  const getUserCoupon = async (id: string) => {
     const { data: coupons, errors } = await client.models.UserCoupon.list({
       filter: {
-        userEmail: {
-          eq: userStore.email,
+        userId: {
+          eq: id,
         },
       },
     })
@@ -45,9 +58,9 @@ export function useAmplify() {
     return coupons
   }
 
-  const giveUserCoupon = async (couponId: string) => {
+  const giveUserCoupon = async (userId: string, couponId: string) => {
     const { data, errors } = await client.models.UserCoupon.create({
-      userEmail: userStore.email,
+      userId,
       couponId,
     })
     if (errors)
@@ -64,5 +77,5 @@ export function useAmplify() {
     return data
   }
 
-  return { getCoupon, getUserCoupon, createCoupon, giveUserCoupon, createUser }
+  return { getCoupon, getUserCoupon, createCoupon, giveUserCoupon, createUser, getUserIdByEmail }
 }

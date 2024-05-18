@@ -2,7 +2,7 @@
 const props = defineProps({
   finishedDays: {
     type: Array,
-    default: () => [true, false, false, true, true, false, false],
+    default: () => [true, false, false, true, true, true, false],
   },
 })
 const date = new Date()

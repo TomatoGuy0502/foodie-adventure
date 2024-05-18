@@ -11,6 +11,12 @@ const displayLocale: Record<string, string> = {
 }
 
 const auth = useAuthenticator()
+const userStore = useUserStore()
+
+function signOut() {
+  userStore.signOut()
+  auth.signOut()
+}
 </script>
 
 <template>
@@ -57,7 +63,7 @@ const auth = useAuthenticator()
           <div class="i-tabler-question-circle text-secondary" />
           {{ $t('help') }}
         </li>
-        <li class="w-full flex cursor-pointer items-center gap-4 rounded-xl bg-white p-3 px-4 text-neutral-900 shadow hover:bg-primary/10" @click="auth.signOut">
+        <li class="w-full flex cursor-pointer items-center gap-4 rounded-xl bg-white p-3 px-4 text-neutral-900 shadow hover:bg-primary/10" @click="signOut">
           <div class="i-tabler-logout text-secondary" />
           {{ $t('logout') }}
         </li>
