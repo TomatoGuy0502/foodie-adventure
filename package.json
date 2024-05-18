@@ -32,6 +32,7 @@
     "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/i18n": "^8.3.1",
     "@pinia/nuxt": "^0.5.1",
+    "@types/aws-lambda": "^8.10.138",
     "@unocss/eslint-config": "^0.59.4",
     "@unocss/nuxt": "^0.59.4",
     "@vite-pwa/nuxt": "^0.6.0",
