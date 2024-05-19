@@ -96,7 +96,7 @@ async function handleUserCheckInToday() {
     <div v-else class="grid flex-1 place-items-center">
       你已經完成今天的探險囉！
     </div>
-    <div class="fixed left-5 top-5 flex flex-col gap-4">
+    <div class="fixed left-5 top-5 hidden flex-col gap-4 lg:flex">
       選定： {{ fakeDate }}
       <select v-model="fakeDate">
         <option v-for="i in 10" :key="i" :value="toDateString(addDays(new Date(), -i + 1))">
