@@ -26,7 +26,7 @@ watch(() => props.weekCheckedInDay, (newVal) => {
       </li>
     </ol>
     <div class="relative">
-      <div class="absolute inset-x-0 top-1 h-4 flex rounded-full bg-neutral-300">
+      <div class="absolute inset-x-0 top-1 h-4 flex overflow-hidden rounded-full rounded-full bg-neutral-300">
         <div
           v-for="i in 6" :key="i"
           class="flex-1" :class="[continueInterval[i - 1] ? 'bg-secondary-300' : '']"

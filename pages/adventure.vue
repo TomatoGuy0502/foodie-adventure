@@ -3,6 +3,8 @@ definePageMeta({
   middleware: 'auth',
 })
 
+const router = useRouter()
+
 const conversationIndex = ref(0)
 
 const conversation = [{
@@ -46,6 +48,11 @@ async function handleGetUserCheckIns() {
   const res = await getUserCheckIns(userStore.userId)
   console.log(res)
 }
+async function handleUserCheckInToday() {
+  await userCheckIn(userStore.userId)
+  userStore.isUserCheckedIn = true
+  router.push('/')
+}
 </script>
 
 <template>
@@ -81,7 +88,7 @@ async function handleGetUserCheckIns() {
           </li>
         </ol>
       </template>
-      <button v-else class="flex items-center justify-center gap-2 rounded-full bg-primary/80 p-2 text-white font-bold shadow-xl backdrop-blur-sm hover:bg-primary/90">
+      <button v-else class="flex items-center justify-center gap-2 rounded-full bg-primary/80 p-2 text-white font-bold shadow-xl backdrop-blur-sm hover:bg-primary/90" @click="handleUserCheckInToday">
         領取禮物
         <div class="i-tabler-gift" />
       </button>

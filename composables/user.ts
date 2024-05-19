@@ -36,7 +36,7 @@ export const useUserStore = defineStore('user', () => {
     email: readonly(email),
     userId: readonly(userId),
     hasCheckUserCheckIn: readonly(hasCheckUserCheckIn),
-    isUserCheckedIn: readonly(isUserCheckedIn),
+    isUserCheckedIn,
     setEmail,
     setUserId,
     signOut,
